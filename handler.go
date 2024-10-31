@@ -14,6 +14,7 @@ func RenderTemplate(w http.ResponseWriter, tmpl string) {
 }
 func Home(w http.ResponseWriter, r *http.Request) {
 	RenderTemplate(w, "home")
+	
 }
 
 func Contact(w http.ResponseWriter, r *http.Request) {
