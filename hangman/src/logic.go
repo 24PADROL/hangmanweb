@@ -61,10 +61,6 @@ func Game() {
 	letterTestedFalse = nil
 	letterTestedTrue = nil
 	wordletter := []rune(word)
-	WordSelect()
-}
-
-func WordSelect() {
 	for i := 0; i < len([]rune(word)); i++ {
 		tab = append(tab, "_")
 		tab = append(tab, " ")
@@ -76,7 +72,6 @@ func WordSelect() {
 			wordcomp += "e"
 		}
 	}
-}
 	if diff == "s" {
 		fmt.Println(wordfind)
 	}

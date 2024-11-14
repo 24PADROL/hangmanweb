@@ -1,11 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hangman web</title>
+    <title>hangmanweb</title>
+    <style>
+        body {
+            background-color: cyan;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Prend la hauteur de la fenêtre */
+            margin: 0; /* Supprime les marges par défaut */
+        }
+        h1 {
+            text-align: left; /* Centre le texte dans l'élément */
+        }
+
+    </style>
 </head>
 <body>
-    <h1>Home sweet home</h1>
+    <div>
+        <form method ="POST" action = "/">
+            <label> Lettre <input name = "name" type = "text" value = ""/>
+                <input type = "submit" value = "submit"/>
+        </form>
+    </div>
+    <h1>trouve</h1>
+    <p> {{.Lettre}}</p>
+    </form>
 </body>
 </html>
