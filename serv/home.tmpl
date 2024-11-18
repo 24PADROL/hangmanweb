@@ -13,20 +13,14 @@
             height: 100vh; /* Prend la hauteur de la fenêtre */
             margin: 0; /* Supprime les marges par défaut */
         }
-        h1 {
-            text-align: left; /* Centre le texte dans l'élément */
-        }
-
     </style>
 </head>
 <body>
     <div>
-        <form method ="POST" action = "/">
-            <label> Lettre <input name = "name" type = "text" value = ""/>
-                <input type = "submit" value = "submit"/>
+        <form method ="POST" action = "/input">
+            <input name = "LettreARecuperer" type = "text" placeholder= "Trouve"/>
         </form>
     </div>
-    <h1>trouve</h1>
     <p> {{.Lettre}}</p>
     </form>
 </body>
