@@ -14,7 +14,6 @@ type DataForm struct {
 var Data DataForm
 
 func RenderTemplate(w http.ResponseWriter, tmpl string) {
-	Data.LettreUsed = append(Data.Lettre, 0 )
 	t, err := template.ParseFiles("./serv/" + tmpl + ".tmpl")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
