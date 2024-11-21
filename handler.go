@@ -7,7 +7,7 @@ import (
 )
 
 type DataForm struct { 
-	LettreUsed string
+	LettreUsed []string
 }
 
 var Data DataForm
@@ -26,6 +26,6 @@ func Home(w http.ResponseWriter, r *http.Request) {
 }
 
 func Input(w http.ResponseWriter, r *http.Request) {
-	Data.LettreUsed = r.FormValue("LettreARecuperer")
+	Data.LettreUsed = append(Data.LettreUsed, r.FormValue("LettreARecuperer"))
 	Home(w, r)
 }
