@@ -13,6 +13,7 @@ type DataForm struct {
 	Words      []string
 	NameFill   string
 	Word       string
+	TabHidden	[]string
 }
 
 var Data DataForm
@@ -39,10 +40,20 @@ func randomWord() {
 	}
 	Data.Word = Data.Words[rand.Intn(200)]
 }
+
+func printHidden() {
+	for i := 0; i < len([]rune(Data.Word)); i++ {
+		Data.TabHidden = append(Data.TabHidden, "_")
+		Data.TabHidden = append(Data.TabHidden, " ")
+	}
+}
+
 func Init() {
 	randomWord()
+	printHidden()
 }
-func Web(){
+
+func Web() {
 	http.HandleFunc("/", Home)
 	http.HandleFunc("/input", Input)
 	fmt.Println("(http://localhost:8080) - server started on port", port)
