@@ -1,19 +1,40 @@
 package main
 
 import (
-	// "fmt"
+	"bufio"
+	"fmt"
 	"net/http"
+	"os"
 	"text/template"
 )
 
-type DataForm struct { 
+type DataForm struct {
 	LettreUsed []string
 }
 
 var Data DataForm
+var words []string
+var nameFill string = "motsimple.txt"
 
-func RenderTemplate(w http.ResponseWriter, tmpl string) {
-	t, err := template.ParseFiles("./serv/" + tmpl + ".tmpl")
+func randomWord() {
+	fichier, err := os.Open(nameFill)
+	if err != nil {
+		fmt.Println("Erreur:", err)
+		return
+	}
+	defer fichier.Close()
+	scanner := bufio.NewScanner(fichier)
+	for scanner.Scan() {
+		words = append(words, scanner.Text())
+	}
+	if len(words) == 0 {
+		fmt.Println("le fichier ne contient rien")
+		return
+	}
+}
+
+func RenderTemplate(w http.ResponseWriter, html string) {
+	t, err := template.ParseFiles("./serv/" + html + ".html")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
