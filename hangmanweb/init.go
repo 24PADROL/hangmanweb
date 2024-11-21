@@ -19,6 +19,8 @@ var Data DataForm
 
 var nameFill string = "motsimple.txt"
 
+const port = ":8080"
+
 func randomWord() {
 	fichier, err := os.Open(nameFill)
 	if err != nil {
