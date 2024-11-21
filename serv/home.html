@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hangmanweb</title>
+    <style>
+        body {
+            background-color: cyan;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Prend la hauteur de la fenêtre */
+            margin: 0; /* Supprime les marges par défaut */
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <form method ="POST" action = "/input">
+            <input name = "LettreARecuperer" type = "text" placeholder= "Trouve"/>
+        </form>
+    </div>
+    <p> {{.LettreUsed}}</p>
+    <p>{{.Word}}</p>
+    </form>
+</body>
+</html>

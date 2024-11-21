@@ -5,19 +5,15 @@ import (
 	"net/http"
 )
 
-var port = ":8080"
+const port = ":8080"
 
 func main() {
+
+	randomWord()
 	http.HandleFunc("/", Home)
-	http.HandleFunc("/contact", Contact)
+	http.HandleFunc("/input", Input)
 	fmt.Println("(http://localhost:8080) - server started on port", port)
 	http.ListenAndServe(port, nil)
-}
-
-func Home(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Me parlez pas")
-}
-
-func Contact(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Me parlez pas")
+	fs := http.FileServer(http.Dir("serv/"))
+	http.Handle("serv/", http.StripPrefix("serv/", fs))
 }
