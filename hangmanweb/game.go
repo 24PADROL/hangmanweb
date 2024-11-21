@@ -1,5 +1,0 @@
-package hangmanweb
-
-func FindingWord() {
-	
-}
