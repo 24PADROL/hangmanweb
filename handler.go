@@ -6,15 +6,21 @@ import (
 	"net/http"
 	"os"
 	"text/template"
+	"math/rand"
 )
 
 type DataForm struct {
 	LettreUsed []string
+	Words []string
+	NameFill string
+	Word 	string
 }
 
 var Data DataForm
-var words []string
+
 var nameFill string = "motsimple.txt"
+
+
 
 func randomWord() {
 	fichier, err := os.Open(nameFill)
@@ -22,16 +28,20 @@ func randomWord() {
 		fmt.Println("Erreur:", err)
 		return
 	}
+	
+
 	defer fichier.Close()
 	scanner := bufio.NewScanner(fichier)
 	for scanner.Scan() {
-		words = append(words, scanner.Text())
+		Data.Words = append(Data.Words, scanner.Text())
 	}
-	if len(words) == 0 {
+	if len(Data.Words) == 0 {
 		fmt.Println("le fichier ne contient rien")
 		return
 	}
+	Data.Word = Data.Words[rand.Intn(200)]
 }
+
 
 func RenderTemplate(w http.ResponseWriter, html string) {
 	t, err := template.ParseFiles("./serv/" + html + ".html")
