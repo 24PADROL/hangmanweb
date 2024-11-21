@@ -4,7 +4,6 @@ import (
 	h "hangmanweb/hangmanweb"
 )
 
-const port = ":8080"
 
 func main() {
 
