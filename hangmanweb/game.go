@@ -1,0 +1,5 @@
+package hangmanweb
+
+func FindingWord() {
+	
+}
