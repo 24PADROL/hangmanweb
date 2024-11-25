@@ -13,3 +13,4 @@ func RevealLetter() {
 		Data.TabHidden[count] = "LettreARecuperer"
 	}
 }
+//test
