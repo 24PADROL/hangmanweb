@@ -18,6 +18,9 @@ type DataForm struct {
 
 var Data DataForm
 
+var ishere bool = false
+
+var count int
 var nameFill string = "motsimple.txt"
 
 const port = ":8080"
