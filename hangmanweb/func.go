@@ -10,3 +10,4 @@ func CheckWin() {
 	}
 	fmt.Println("gg")
 }
+//test
