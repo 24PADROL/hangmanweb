@@ -1,15 +1,12 @@
 package hangmanweb
 
-func FindingLetter() {
-	for _, i := range Data.Word {
-		if string(i) == "LettreARecuperer" {
-			ishere = true
+import "fmt"
+
+func CheckWin() {
+	for _, i := range Data.TabHidden {
+		if i != "-" {
+			win = true
 		}
 	}
-}
-
-func RevealLetter() {
-	if ishere == true {
-		Data.TabHidden[count] = "LettreARecuperer"
-	}
+	fmt.Println("gg")
 }

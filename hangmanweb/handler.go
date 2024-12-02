@@ -19,6 +19,29 @@ func Home(w http.ResponseWriter, r *http.Request) {
 }
 
 func Input(w http.ResponseWriter, r *http.Request) {
-	Data.LettreUsed = append(Data.LettreUsed, r.FormValue("LettreARecuperer"))
+	// Retrieve the guessed letter
+	guessedLetter := r.FormValue("LettreARecuperer")
+	// if guessedLetter == "" {
+	// 	http.Error(w, "No letter provided", http.StatusBadRequest)
+	// 	return
+	// }
+
+	// Append the guessed letter to the list of used letters
+	Data.LettreUsed = append(Data.LettreUsed, guessedLetter)
+
+	// Check if the guessed letter exists in the word
+	for i, char := range Data.Word {
+		if string(char) == guessedLetter {
+			// Reveal the guessed letter in the hidden word
+			Data.TabHidden[2*i] = guessedLetter
+		}
+	}
+
+	// Redirect or render the main view
 	Home(w, r)
 }
+
+
+
+
+
