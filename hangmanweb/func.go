@@ -3,11 +3,17 @@ package hangmanweb
 import "fmt"
 
 func CheckWin() {
+	win := true // Assume win initially
 	for _, i := range Data.TabHidden {
-		if i != "-" {
-			win = true
+		if i == "_" { // If any element is "_", the game is not won
+			win = false
+			break
 		}
 	}
-	fmt.Println("gg")
+	if win {
+		fmt.Println("GG, vous avez gagné !")
+	}
 }
-//test
+
+func Win() {
+}
