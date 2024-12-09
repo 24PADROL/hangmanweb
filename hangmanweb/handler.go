@@ -3,7 +3,7 @@ package hangmanweb
 import (
 	"net/http"
 	"text/template"
-	"fmt"
+	// "fmt"
 )
 
 func RenderTemplate(w http.ResponseWriter, html string) {
@@ -47,7 +47,8 @@ func Input(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 	if win {
-		fmt.Println("GG, vous avez gagné !")
+		// fmt.Println("GG, vous avez gagné !")
+		WebVictory()
 	}
 	Home(w, r) 	// Redirect or render the main view
 }
