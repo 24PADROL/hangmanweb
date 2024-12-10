@@ -6,6 +6,7 @@ import (
 	"math/rand"
 	"net/http"
 	"os"
+	"strings"
 )
 
 type DataForm struct {
@@ -13,9 +14,13 @@ type DataForm struct {
 	Words      []string
 	NameFill   string
 	Word       string
+	TabHidden	[]string
+	Letter string
 }
 
 var Data DataForm
+
+var win bool = false
 
 var nameFill string = "motsimple.txt"
 
@@ -37,12 +42,22 @@ func randomWord() {
 		fmt.Println("le fichier ne contient rien")
 		return
 	}
-	Data.Word = Data.Words[rand.Intn(200)]
+	Data.Word = strings.ToLower(Data.Words[rand.Intn(200)])
 }
+
+func printHidden() {
+	for i := 0; i < len([]rune(Data.Word)); i++ {
+		Data.TabHidden = append(Data.TabHidden, "_")
+		Data.TabHidden = append(Data.TabHidden, " ")
+	}
+}
+
 func Init() {
 	randomWord()
+	printHidden()
 }
-func Web(){
+
+func Web() {
 	http.HandleFunc("/", Home)
 	http.HandleFunc("/input", Input)
 	fmt.Println("(http://localhost:8080) - server started on port", port)
@@ -50,3 +65,13 @@ func Web(){
 	fs := http.FileServer(http.Dir("serv/"))
 	http.Handle("serv/", http.StripPrefix("serv/", fs))
 }
+
+func WebVictory(){
+	http.HandleFunc("/victory", Victory)
+	http.ListenAndServe(port, nil)
+	fs := http.FileServer(http.Dir("serv/"))
+	http.Handle("serv/", http.StripPrefix("serv/", fs))
+	fmt.Println("A")
+}
+
+func PrintWeb(){}
