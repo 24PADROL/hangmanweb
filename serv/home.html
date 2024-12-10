@@ -3,27 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>hangmanweb</title>
+    <title>Jeu du Pendu</title>
     <style>
         body {
-            background-color: cyan;
+            background-color: #f0f8ff;
+            font-family: Arial, sans-serif;
+            color: #333;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh; /* Prend la hauteur de la fenêtre */
-            margin: 0; /* Supprime les marges par défaut */
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            color: #007acc;
+        }
+        form {
+            margin: 20px 0;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #007acc;
+            border-radius: 5px;
+            width: 200px;
+            text-align: center;
+        }
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #005a9e;
+            box-shadow: 0 0 5px rgba(0, 90, 158, 0.5);
+        }
+        .feedback {
+            margin-top: 20px;
+            font-size: 18px;
         }
     </style>
 </head>
 <body>
-    <div>
-        <form method ="POST" action = "/input">
-            <input name = "LettreARecuperer" type = "text" placeholder= "Trouve"/>
-        </form>
-    </div>
-     <p> {{.LettreUsed}}</p>
-    <p>{{.TabHidden}}</p>
-    <p>{{.Word}}</p>
+    <h1>Jeu du Pendu</h1>
+    <form method="POST" action="/input" id="letterForm">
+        <input 
+            name="LettreARecuperer" 
+            type="text" 
+            placeholder="Entrez une lettre" 
+            maxlength="1" 
+            required 
+            id="letterInput">
     </form>
+    <div class="feedback">
+        <p>Lettres utilisées : {{.LettreUsed}}</p>
+        <p>Mot caché : {{.TabHidden}}</p>
+        <p>Mot à deviner : {{.Word}}</p>
+    </div>
+    <script>
+        // Donner automatiquement le focus au champ de texte dès le chargement
+        window.onload = () => {
+            document.getElementById('letterInput').focus();
+        };
+
+        // Soumission automatique lorsqu'une lettre est entrée
+        const inputField = document.getElementById('letterInput');
+        const form = document.getElementById('letterForm');
+
+        inputField.addEventListener('input', () => {
+            if (inputField.value.length === 1) {
+                form.submit();
+            }
+        });
+    </script>
 </body>
 </html>
