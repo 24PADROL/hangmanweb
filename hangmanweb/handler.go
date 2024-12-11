@@ -1,7 +1,7 @@
 package hangmanweb
 
 import (
-	"fmt"
+	// "fmt"
 	"net/http"
 	"text/template"
 )
@@ -49,7 +49,8 @@ func Input(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 	if win {
-		fmt.Println("GG, vous avez gagné !")
+		// fmt.Println("GG, vous avez gagné !")
+		WebVictory()
 	}
 	Home(w, r) // Redirect or render the main view
 }

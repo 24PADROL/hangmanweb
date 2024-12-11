@@ -7,5 +7,4 @@ import (
 func main() {
 	h.Init()
 	h.Web()
-	h.CheckWin()
 }
