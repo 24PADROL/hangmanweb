@@ -14,8 +14,8 @@ type DataForm struct {
 	Words      []string
 	NameFill   string
 	Word       string
-	TabHidden	[]string
-	Letter string
+	TabHidden  []string
+	Letter     string
 }
 
 var Data DataForm

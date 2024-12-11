@@ -1,9 +1,9 @@
 package hangmanweb
 
 import (
+	"fmt"
 	"net/http"
 	"text/template"
-	"fmt"
 )
 
 func RenderTemplate(w http.ResponseWriter, html string) {
@@ -18,9 +18,11 @@ func RenderTemplate(w http.ResponseWriter, html string) {
 func Home(w http.ResponseWriter, r *http.Request) {
 	RenderTemplate(w, "home")
 }
-func Victory(w http.ResponseWriter, r *http.Request){
+
+func Victory(w http.ResponseWriter, r *http.Request) {
 	RenderTemplate(w, "victory")
 }
+
 func Input(w http.ResponseWriter, r *http.Request) {
 	// Retrieve the guessed letter
 	guessedLetter := r.FormValue("LettreARecuperer")
@@ -49,13 +51,5 @@ func Input(w http.ResponseWriter, r *http.Request) {
 	if win {
 		fmt.Println("GG, vous avez gagné !")
 	}
-	Home(w, r) 	// Redirect or render the main view
+	Home(w, r) // Redirect or render the main view
 }
-
-
-
-
-
-
-
-
