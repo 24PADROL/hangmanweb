@@ -4,6 +4,7 @@ import (
 	// "fmt"
 	"net/http"
 	"text/template"
+	// "fmt"
 )
 
 func RenderTemplate(w http.ResponseWriter, html string) {
