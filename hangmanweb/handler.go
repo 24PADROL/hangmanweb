@@ -3,6 +3,7 @@ package hangmanweb
 import (
 	// "fmt"
 	"net/http"
+	"strings"
 	"text/template"
 	// "fmt"
 )
@@ -42,6 +43,11 @@ func Input(w http.ResponseWriter, r *http.Request) {
 			Data.TabHidden[2*i] = guessedLetter
 		}
 	}
+	if strings.Join(Data.TabHidden, "") == Data.Word {
+		win = true
+		http.Redirect(w, r, "/victory", http.StatusSeeOther)
+		return
+	}
 	win := true // Assume win initially
 	for _, i := range Data.TabHidden {
 		if i == "_" { // If any element is "_", the game is not won
@@ -50,8 +56,7 @@ func Input(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 	if win {
-		// fmt.Println("GG, vous avez gagné !")
-		WebVictory()
+		Victory(w, r)
 	}
 	Home(w, r) // Redirect or render the main view
 }
