@@ -58,11 +58,17 @@ func Init() {
 	printHidden()
 }
 
+func Reset(w http.ResponseWriter, r *http.Request) {
+	Init() // Réinitialise les données de jeu
+	http.Redirect(w, r, "/", http.StatusSeeOther) // Redirige vers la page d'accueil
+}
+
 
 func Web() {
 	http.HandleFunc("/", Home)
 	http.HandleFunc("/input", Input)
 	http.HandleFunc("/victory", Victory)
+	http.HandleFunc("/reset", Reset)
 	fmt.Println("(http://localhost:8080) - server started on port", port)
 	http.ListenAndServe(port, nil)
 	fs := http.FileServer(http.Dir("serv/"))
