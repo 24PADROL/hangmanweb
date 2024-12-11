@@ -73,5 +73,3 @@ func WebVictory(){
 	http.Handle("serv/", http.StripPrefix("serv/", fs))
 	fmt.Println("A")
 }
-
-func PrintWeb(){}
