@@ -53,9 +53,11 @@ func printHidden() {
 }
 
 func Init() {
+	Data = DataForm{} // Réinitialiser les données
 	randomWord()
 	printHidden()
 }
+
 
 func Web() {
 	http.HandleFunc("/", Home)
