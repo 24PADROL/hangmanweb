@@ -35,7 +35,7 @@ func Input(w http.ResponseWriter, r *http.Request) {
 	// 	http.Error(w, "No letter provided", http.StatusBadRequest)
 	// 	return
 	// }
-	
+
 	Data.LettreUsed = append(Data.LettreUsed, guessedLetter)
 
 	// Check if the guessed letter exists in the word
@@ -61,6 +61,7 @@ func Input(w http.ResponseWriter, r *http.Request) {
 	}
 	if win {
 		Victory(w, r)
+	}else{
+		Home(w, r) // Redirect or render the main view
 	}
-	Home(w, r) // Redirect or render the main view
 }
