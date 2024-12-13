@@ -1,5 +1,5 @@
 package hangmanweb
 
-func Game(){
-	
+func Game() {
+
 }

@@ -14,13 +14,15 @@ type DataForm struct {
 	Words      []string
 	NameFill   string
 	Word       string
-	TabHidden	[]string
-	Letter string
+	TabHidden  []string
+	Letter     string
 }
 
 var Data DataForm
 
 var win bool = false
+
+var try = 10
 
 var nameFill string = "motsimple.txt"
 
@@ -53,25 +55,24 @@ func printHidden() {
 }
 
 func Init() {
+	Data = DataForm{} // Réinitialiser les données
 	randomWord()
 	printHidden()
 }
 
+func Reset(w http.ResponseWriter, r *http.Request) {
+	Init() // Réinitialise les données de jeu
+	http.Redirect(w, r, "/", http.StatusSeeOther) // Redirige vers la page d'accueil
+}
+
+
 func Web() {
 	http.HandleFunc("/", Home)
 	http.HandleFunc("/input", Input)
+	http.HandleFunc("/victory", Victory)
+	http.HandleFunc("/reset", Reset)
 	fmt.Println("(http://localhost:8080) - server started on port", port)
 	http.ListenAndServe(port, nil)
 	fs := http.FileServer(http.Dir("serv/"))
 	http.Handle("serv/", http.StripPrefix("serv/", fs))
 }
-
-func WebVictory(){
-	http.HandleFunc("/victory", Victory)
-	http.ListenAndServe(port, nil)
-	fs := http.FileServer(http.Dir("serv/"))
-	http.Handle("serv/", http.StripPrefix("serv/", fs))
-	fmt.Println("A")
-}
-
-func PrintWeb(){}

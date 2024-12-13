@@ -42,6 +42,7 @@
     </style>
 </head>
 <body>
+<<<<<<< HEAD
     <h1>Jeu du Pendu</h1>
     <form method="POST" action="/input" id="letterForm">
         <input 
@@ -51,6 +52,21 @@
             maxlength="1" 
             required 
             id="letterInput">
+=======
+    <div>
+        <form method ="POST" action = "/input">
+            <input name = "LettreARecuperer" type = "text" placeholder= "Trouve" maxlength="1" required id ="letterInput" />
+        </form>
+    </div>
+<script>
+        window.onload = () => {
+            document.getElementById('letterInput').focus();
+        };
+</script>
+     <p> {{.LettreUsed}}</p>
+    <p>{{.TabHidden}}</p>
+    <p>{{.Word}}</p>
+>>>>>>> e03d67e8e060d12b39a80beb6d54483c488432ed
     </form>
     <div class="feedback">
         <p>Lettres utilisées : {{.LettreUsed}}</p>

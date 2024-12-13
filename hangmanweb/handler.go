@@ -1,9 +1,10 @@
 package hangmanweb
 
 import (
-	"net/http"
-	"text/template"
 	// "fmt"
+	"net/http"
+	"strings"
+	"text/template"
 )
 
 func RenderTemplate(w http.ResponseWriter, html string) {
@@ -18,9 +19,15 @@ func RenderTemplate(w http.ResponseWriter, html string) {
 func Home(w http.ResponseWriter, r *http.Request) {
 	RenderTemplate(w, "home")
 }
-func Victory(w http.ResponseWriter, r *http.Request){
+
+func Victory(w http.ResponseWriter, r *http.Request) {
 	RenderTemplate(w, "victory")
 }
+
+func Lose(w http.ResponseWriter, r *http.Request) {
+	RenderTemplate(w,"lose")
+}
+
 func Input(w http.ResponseWriter, r *http.Request) {
 	// Retrieve the guessed letter
 	guessedLetter := r.FormValue("LettreARecuperer")
@@ -29,7 +36,6 @@ func Input(w http.ResponseWriter, r *http.Request) {
 	// 	return
 	// }
 
-	// Append the guessed letter to the list of used letters
 	Data.LettreUsed = append(Data.LettreUsed, guessedLetter)
 
 	// Check if the guessed letter exists in the word
@@ -37,7 +43,14 @@ func Input(w http.ResponseWriter, r *http.Request) {
 		if string(char) == guessedLetter {
 			// Reveal the guessed letter in the hidden word
 			Data.TabHidden[2*i] = guessedLetter
+		}else{
+			
 		}
+	}
+	if strings.Join(Data.TabHidden, "") == Data.Word {
+		win = true
+		http.Redirect(w, r, "/victory", http.StatusSeeOther)
+		return
 	}
 	win := true // Assume win initially
 	for _, i := range Data.TabHidden {
@@ -47,16 +60,8 @@ func Input(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 	if win {
-		// fmt.Println("GG, vous avez gagné !")
-		WebVictory()
+		Victory(w, r)
+	}else{
+		Home(w, r) // Redirect or render the main view
 	}
-	Home(w, r) 	// Redirect or render the main view
 }
-
-
-
-
-
-
-
-
