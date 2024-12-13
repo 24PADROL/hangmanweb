@@ -33,6 +33,16 @@ func Input(w http.ResponseWriter, r *http.Request) {
 	// 	http.Error(w, "No letter provided", http.StatusBadRequest)
 	// 	return
 	// }
+	// faire tout ls carac de fdp
+	if guessedLetter == "é"||guessedLetter == "è"{
+		guessedLetter = "e"
+	}
+	if guessedLetter == "à"{
+		guessedLetter = "a"
+	}
+	if guessedLetter == "ù"{
+		guessedLetter = "u"
+	}
 
 	Data.LettreUsed = append(Data.LettreUsed, guessedLetter)
 

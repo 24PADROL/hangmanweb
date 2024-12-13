@@ -70,7 +70,7 @@
     <div>
         <form method="POST" action="/input">
             <label for="letterInput">Propose une lettre :</label>
-            <input name="LettreARecuperer" type="text" placeholder="" maxlength="1" required id="letterInput" />
+            <input name="LettreARecuperer" type="text" placeholder="" maxlength="1" required id="letterInput" pattern="[a-zA-ZÀ-ſ]" title="Veuillez entrer une lettre valide (sans chiffres ni symboles)." />
             <button type="submit">Envoyer</button>
         </form>
     </div>
