@@ -1,9 +1,7 @@
 package hangmanweb
 
 import (
-	// "fmt"
 	"net/http"
-	"strings"
 	"text/template"
 )
 
@@ -25,7 +23,7 @@ func Victory(w http.ResponseWriter, r *http.Request) {
 }
 
 func Lose(w http.ResponseWriter, r *http.Request) {
-	RenderTemplate(w,"lose")
+	RenderTemplate(w, "lose")
 }
 
 func Input(w http.ResponseWriter, r *http.Request) {
@@ -35,7 +33,17 @@ func Input(w http.ResponseWriter, r *http.Request) {
 	// 	http.Error(w, "No letter provided", http.StatusBadRequest)
 	// 	return
 	// }
-
+	// faire tout ls carac de fdp
+	if guessedLetter == "é"||guessedLetter == "è"{
+		guessedLetter = "e"
+	}
+	if guessedLetter == "à"{
+		guessedLetter = "a"
+	}
+	if guessedLetter == "ù"{
+		guessedLetter = "u"
+	}
+	
 	Data.LettreUsed = append(Data.LettreUsed, guessedLetter)
 
 	// Check if the guessed letter exists in the word
@@ -43,16 +51,18 @@ func Input(w http.ResponseWriter, r *http.Request) {
 		if string(char) == guessedLetter {
 			// Reveal the guessed letter in the hidden word
 			Data.TabHidden[2*i] = guessedLetter
-		}else{
-			
+			nothere = false
 		}
 	}
-	if strings.Join(Data.TabHidden, "") == Data.Word {
-		win = true
-		http.Redirect(w, r, "/victory", http.StatusSeeOther)
-		return
+	// if strings.Join(Data.TabHidden, "") == Data.Word {
+	// 	win = true
+	// 	http.Redirect(w, r, "/victory", http.StatusSeeOther)
+	// 	return
+	// }
+	if nothere {
+		Data.Try--
 	}
-	win := true // Assume win initially
+	win = true
 	for _, i := range Data.TabHidden {
 		if i == "_" { // If any element is "_", the game is not won
 			win = false
@@ -61,7 +71,9 @@ func Input(w http.ResponseWriter, r *http.Request) {
 	}
 	if win {
 		Victory(w, r)
-	}else{
+	} else if Data.Try == 0 {
+		Lose(w, r)
+	} else {
 		Home(w, r) // Redirect or render the main view
 	}
 }
