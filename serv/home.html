@@ -18,9 +18,14 @@
 <body>
     <div>
         <form method ="POST" action = "/input">
-            <input name = "LettreARecuperer" type = "text" placeholder= "Trouve"/>
+            <input name = "LettreARecuperer" type = "text" placeholder= "Trouve" maxlength="1" required id ="letterInput" />
         </form>
     </div>
+<script>
+        window.onload = () => {
+            document.getElementById('letterInput').focus();
+        };
+</script>
      <p> {{.LettreUsed}}</p>
     <p>{{.TabHidden}}</p>
     <p>{{.Word}}</p>

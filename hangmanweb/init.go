@@ -14,8 +14,8 @@ type DataForm struct {
 	Words      []string
 	NameFill   string
 	Word       string
-	TabHidden	[]string
-	Letter string
+	TabHidden  []string
+	Letter     string
 }
 
 var Data DataForm
@@ -53,9 +53,16 @@ func printHidden() {
 }
 
 func Init() {
+	Data = DataForm{} // Réinitialiser les données
 	randomWord()
 	printHidden()
 }
+
+func Reset(w http.ResponseWriter, r *http.Request) {
+	Init() // Réinitialise les données de jeu
+	http.Redirect(w, r, "/", http.StatusSeeOther) // Redirige vers la page d'accueil
+}
+
 
 func Web() {
 	http.HandleFunc("/", Home)
@@ -67,5 +74,3 @@ func Web() {
 	fs := http.FileServer(http.Dir("serv/"))
 	http.Handle("serv/", http.StripPrefix("serv/", fs))
 }
-
-func PrintWeb(){}
