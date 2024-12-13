@@ -43,10 +43,8 @@ func Input(w http.ResponseWriter, r *http.Request) {
 	if guessedLetter == "ù"{
 		guessedLetter = "u"
 	}
-	
-	Data.LettreUsed = append(Data.LettreUsed, guessedLetter)
 
-	// Check if the guessed letter exists in the word
+	Data.LettreUsed = append(Data.LettreUsed, guessedLetter)
 	for i, char := range Data.Word {
 		if string(char) == guessedLetter {
 			// Reveal the guessed letter in the hidden word
