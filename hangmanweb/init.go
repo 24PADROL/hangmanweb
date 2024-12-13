@@ -22,6 +22,8 @@ var Data DataForm
 
 var win bool = false
 
+var try = 10
+
 var nameFill string = "motsimple.txt"
 
 const port = ":8080"
