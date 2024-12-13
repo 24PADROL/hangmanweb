@@ -6,7 +6,7 @@
     <title>Jeu du Pendu</title>
     <style>
         body {
-            background-color: #f0f8ff;
+            background-color: cyan;
             font-family: Arial, sans-serif;
             color: #333;
             display: flex;
@@ -42,17 +42,6 @@
     </style>
 </head>
 <body>
-<<<<<<< HEAD
-    <h1>Jeu du Pendu</h1>
-    <form method="POST" action="/input" id="letterForm">
-        <input 
-            name="LettreARecuperer" 
-            type="text" 
-            placeholder="Entrez une lettre" 
-            maxlength="1" 
-            required 
-            id="letterInput">
-=======
     <div>
         <form method ="POST" action = "/input">
             <input name = "LettreARecuperer" type = "text" placeholder= "Trouve" maxlength="1" required id ="letterInput" />
@@ -66,28 +55,6 @@
      <p> {{.LettreUsed}}</p>
     <p>{{.TabHidden}}</p>
     <p>{{.Word}}</p>
->>>>>>> e03d67e8e060d12b39a80beb6d54483c488432ed
     </form>
-    <div class="feedback">
-        <p>Lettres utilisées : {{.LettreUsed}}</p>
-        <p>Mot caché : {{.TabHidden}}</p>
-        <p>Mot à deviner : {{.Word}}</p>
-    </div>
-    <script>
-        // Donner automatiquement le focus au champ de texte dès le chargement
-        window.onload = () => {
-            document.getElementById('letterInput').focus();
-        };
-
-        // Soumission automatique lorsqu'une lettre est entrée
-        const inputField = document.getElementById('letterInput');
-        const form = document.getElementById('letterForm');
-
-        inputField.addEventListener('input', () => {
-            if (inputField.value.length === 1) {
-                form.submit();
-            }
-        });
-    </script>
 </body>
 </html>
