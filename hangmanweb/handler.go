@@ -24,6 +24,10 @@ func Victory(w http.ResponseWriter, r *http.Request) {
 	RenderTemplate(w, "victory")
 }
 
+func Lose(w http.ResponseWriter, r *http.Request) {
+	RenderTemplate(w,"lose")
+}
+
 func Input(w http.ResponseWriter, r *http.Request) {
 	// Retrieve the guessed letter
 	guessedLetter := r.FormValue("LettreARecuperer")
@@ -31,6 +35,7 @@ func Input(w http.ResponseWriter, r *http.Request) {
 	// 	http.Error(w, "No letter provided", http.StatusBadRequest)
 	// 	return
 	// }
+	
 	Data.LettreUsed = append(Data.LettreUsed, guessedLetter)
 
 	// Check if the guessed letter exists in the word
@@ -38,6 +43,8 @@ func Input(w http.ResponseWriter, r *http.Request) {
 		if string(char) == guessedLetter {
 			// Reveal the guessed letter in the hidden word
 			Data.TabHidden[2*i] = guessedLetter
+		}else{
+			
 		}
 	}
 	if strings.Join(Data.TabHidden, "") == Data.Word {
