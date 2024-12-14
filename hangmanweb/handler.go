@@ -29,10 +29,11 @@ func Lose(w http.ResponseWriter, r *http.Request) {
 func Input(w http.ResponseWriter, r *http.Request) {
 	// Retrieve the guessed letter
 	guessedLetter := r.FormValue("LettreARecuperer")
-	if guessedLetter == "é"||guessedLetter == "è" || guessedLetter == "ë" || guessedLetter == "ê"{
+
+	if guessedLetter == "é" || guessedLetter == "è" || guessedLetter == "ë" || guessedLetter == "ê" {
 		guessedLetter = "e"
 	}
-	if guessedLetter == "à" || guessedLetter == "â"{
+	if guessedLetter == "à" || guessedLetter == "â" {
 		guessedLetter = "a"
 	}
 	if guessedLetter == "ù" || guessedLetter == "û" {
@@ -45,8 +46,6 @@ func Input(w http.ResponseWriter, r *http.Request) {
 		guessedLetter = "o"
 	}
 
-
-
 	Data.LettreUsed = append(Data.LettreUsed, guessedLetter)
 	for i, char := range Data.Word {
 		if string(char) == guessedLetter {
@@ -56,6 +55,7 @@ func Input(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 	if nothere {
+		
 		Data.Try--
 	}
 	win = true
