@@ -55,7 +55,6 @@ func Input(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 	if nothere {
-		
 		Data.Try--
 	}
 	win = true
