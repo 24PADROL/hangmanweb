@@ -52,6 +52,7 @@ func Input(w http.ResponseWriter, r *http.Request) {
 			// Reveal the guessed letter in the hidden word
 			Data.TabHidden[2*i] = guessedLetter
 			nothere = false
+			break
 		}
 	}
 	if nothere {
