@@ -22,6 +22,7 @@ type DataForm struct {
 var Data DataForm
 
 var win bool = false
+
 var nothere bool = true
 
 var nameFill string = "motsimple.txt"
@@ -55,7 +56,7 @@ func printHidden() {
 }
 
 func Init() {
-	Data = DataForm{} // Réinitialiser les données
+	Data = DataForm{}
 	Data.Try = 10
 	randomWord()
 	printHidden()
