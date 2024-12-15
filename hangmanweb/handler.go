@@ -28,6 +28,10 @@ func Lose(w http.ResponseWriter, r *http.Request) {
 	RenderTemplate(w,"lose")
 }
 
+func Menu(w http.ResponseWriter, r *http.Request) { 
+	RenderTemplate(w, "menu")
+}
+
 func Input(w http.ResponseWriter, r *http.Request) {
 	// Retrieve the guessed letter
 	guessedLetter := r.FormValue("LettreARecuperer")
