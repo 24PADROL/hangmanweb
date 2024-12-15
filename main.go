@@ -1,10 +1,10 @@
 package main
 
-import(
+import (
 	h "hangmanweb/hangmanweb"
 )
 
 func main() {
-	Init()
-	Web()
+	h.Init()
+	h.Web()
 }

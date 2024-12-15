@@ -1,4 +1,4 @@
-package main
+package hangmanweb
 
 import (
 	"bufio"
@@ -6,20 +6,27 @@ import (
 	"math/rand"
 	"net/http"
 	"os"
+	"strings"
 )
-
-const port = ":8080"
 
 type DataForm struct {
 	LettreUsed []string
 	Words      []string
 	NameFill   string
 	Word       string
+	TabHidden  []string
+	Letter     string
+	Try         int
 }
 
 var Data DataForm
 
+var win bool = false
+var nothere bool = true
+
 var nameFill string = "motsimple.txt"
+
+const port = ":8080"
 
 func randomWord() {
 	fichier, err := os.Open(nameFill)
@@ -37,14 +44,33 @@ func randomWord() {
 		fmt.Println("le fichier ne contient rien")
 		return
 	}
-	Data.Word = Data.Words[rand.Intn(200)]
+	Data.Word = strings.ToLower(Data.Words[rand.Intn(200)])
 }
+
+func printHidden() {
+	for i := 0; i < len([]rune(Data.Word)); i++ {
+		Data.TabHidden = append(Data.TabHidden, "_")
+		Data.TabHidden = append(Data.TabHidden, " ")
+	}
+}
+
 func Init() {
+	Data = DataForm{} // Réinitialiser les données
+	Data.Try = 10
 	randomWord()
+	printHidden()
 }
-func Web(){
+
+func Reset(w http.ResponseWriter, r *http.Request) {
+	Init() // Réinitialise les données de jeu
+	http.Redirect(w, r, "/", http.StatusSeeOther) // Redirige vers la page d'accueil
+}
+
+func Web() {
 	http.HandleFunc("/", Home)
 	http.HandleFunc("/input", Input)
+	http.HandleFunc("/victory", Victory)
+	http.HandleFunc("/reset", Reset)
 	fmt.Println("(http://localhost:8080) - server started on port", port)
 	http.ListenAndServe(port, nil)
 	fs := http.FileServer(http.Dir("serv/"))
