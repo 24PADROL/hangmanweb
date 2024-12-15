@@ -8,6 +8,8 @@ import (
 	"os"
 )
 
+const port = ":8080"
+
 type DataForm struct {
 	LettreUsed []string
 	Words      []string

@@ -1,6 +1,8 @@
 package main
 
-const port = ":8080"
+import(
+	h "hangmanweb/hangmanweb"
+)
 
 func main() {
 	Init()
