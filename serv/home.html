@@ -3,17 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hangman Web</title>
+    <title>Jeu du Pendu</title>
     <style>
         body {
-            background-color: #e0f7fa;
+            background-color: cyan;
             font-family: Arial, sans-serif;
+            color: #333;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             height: 100vh;
             margin: 0;
+        }
+        h1 {
+            color: #007acc;
+        }
+        form {
+            margin: 20px 0;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #007acc;
+            border-radius: 5px;
+            width: 200px;
+            text-align: center;
+        }
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #005a9e;
+            box-shadow: 0 0 5px rgba(0, 90, 158, 0.5);
+        }
+        .feedback {
+            margin-top: 20px;
+            font-size: 18px;
         }
 
         h1 {
@@ -69,20 +94,19 @@
 <body>
     <h1>Jeu du Pendu</h1>
     <div>
-        <form method="POST" action="/input">
-            <label for="letterInput">Propose une lettre :</label>
-            <input name="LettreARecuperer" type="text" placeholder="" maxlength="1" required id="letterInput" pattern="[a-zA-ZÀ-ſ]" title="Veuillez entrer une lettre valide (sans chiffres ni symboles)." />
-            <button type="submit">Envoyer</button>
+        <form method ="POST" action = "/input">
+            <input name = "LettreARecuperer" type = "text" placeholder= "Trouve" maxlength="1" required id ="letterInput" />
         </form>
         <p>Lettres utilisées : <strong>{{.LettreUsed}}</strong></p>
         <p>Mot caché : <strong>{{.TabHidden}}</strong></p>
         <p>Mot complet : <strong>{{.Word}}</strong></p>
         <p>Vie : <strong>{{.Try}}</strong></p>
     </div>
-    <script>
+<script>
         window.onload = () => {
             document.getElementById('letterInput').focus();
         };
-    </script>
+</script>
+    </form>
 </body>
 </html>

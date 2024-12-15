@@ -16,13 +16,13 @@ type DataForm struct {
 	Word       string
 	TabHidden  []string
 	Letter     string
-	Try         int
 }
 
 var Data DataForm
 
 var win bool = false
-var nothere bool = true
+
+var try = 10
 
 var nameFill string = "motsimple.txt"
 
@@ -56,7 +56,6 @@ func printHidden() {
 
 func Init() {
 	Data = DataForm{} // Réinitialiser les données
-	Data.Try = 10
 	randomWord()
 	printHidden()
 }
