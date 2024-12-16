@@ -3,6 +3,7 @@ package hangmanweb
 import (
 	"net/http"
 	"text/template"
+	"strings"
 )
 
 func RenderTemplate(w http.ResponseWriter, html string) {
@@ -38,6 +39,7 @@ func letterAlreadyGuessed(s string) bool {
 func Input(w http.ResponseWriter, r *http.Request) {
 	// Retrieve the guessed letter
 	guessedLetter := r.FormValue("LettreARecuperer")
+	guessedLetter = strings.ToLower(guessedLetter)
 
 	if guessedLetter == "é" || guessedLetter == "è" || guessedLetter == "ë" || guessedLetter == "ê" {
 		guessedLetter = "e"
