@@ -1,15 +1,47 @@
 <!DOCTYPE html>
-		<html lang="fr">
-		<head>
-			<meta charset="UTF-8">
-			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			<title>Victoire</title>
-			<link rel="stylesheet" href="/serv/lose.css">
-		</head>
-		<body>
-			<h1>Ta perdu !</h1>
-			<p>Tu veux retenter ?</p>
-			<a href="/reset">Rejouer</a>
-		</body>
-		</html>
-		<button onclick="location.href='/'">Retourner au Menu</button>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Défaite</title>
+    <link rel="stylesheet" href="/serv/lose.css"> 
+    <link rel="stylesheet" href="/serv/menu.css"> 
+    <style>
+        
+        .play-btn, .quit-btn {
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            padding: 10px 20px;
+            margin-top: 20px;
+            color: white;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .play-btn {
+            background: rgba(40, 167, 69, 0.8); 
+        }
+        .play-btn:hover {
+            background: rgba(40, 167, 69, 1);
+            transform: scale(1.1);
+        }
+
+        .quit-btn {
+            background: rgba(220, 53, 69, 0.8); 
+        }
+        .quit-btn:hover {
+            background: rgba(220, 53, 69, 1);
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Ta perdu !</h1>
+    <p style="color: #00796b;">Tu veux retenter ? 😊</p>
+
+    <button class="play-btn" onclick="location.href='/reset'">Rejouer</button>
+    <button class="quit-btn" onclick="location.href='/menu'">Retourner au Menu</button>
+</body>
+</html>
