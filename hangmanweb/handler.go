@@ -61,6 +61,7 @@ func Input(w http.ResponseWriter, r *http.Request) {
 	if nothere {
 		Data.Try--
 	}
+	nothere = true
 	win = true
 	for _, i := range Data.TabHidden {
 		if i == "_" { // If any element is "_", the game is not won
