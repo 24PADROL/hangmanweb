@@ -68,12 +68,17 @@ func Reset(w http.ResponseWriter, r *http.Request) {
 }
 
 func Web() {
+	http.HandleFunc("/", Menu)     // Menu page
+	http.HandleFunc("/home", Home) // Game page
+	http.HandleFunc("/victory", Victory)
+	http.HandleFunc("/lose", Lose)
+	http.HandleFunc("/input", Input)
+	http.HandleFunc("/reset", Reset)
+
 	fs := http.FileServer(http.Dir("serv/"))
 	http.Handle("/serv/", http.StripPrefix("/serv/", fs))
-	http.HandleFunc("/", Home)
-	http.HandleFunc("/input", Input)
-	http.HandleFunc("/victory", Victory)
-	http.HandleFunc("/reset", Reset)
+
 	fmt.Println("(http://localhost:8080) - server started on port", port)
 	http.ListenAndServe(port, nil)
+
 }

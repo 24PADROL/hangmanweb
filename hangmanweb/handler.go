@@ -26,6 +26,10 @@ func Lose(w http.ResponseWriter, r *http.Request) {
 	RenderTemplate(w, "lose")
 }
 
+func Menu(w http.ResponseWriter, r *http.Request) {
+	RenderTemplate(w, "menu")
+}
+
 func letterAlreadyGuessed(s string) bool {
 	for _, i := range Data.LettreUsed {
 		if s == i {

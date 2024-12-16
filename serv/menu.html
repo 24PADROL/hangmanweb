@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Jeu du Pendu</title>
+    <link rel="stylesheet" href="/serv/menu.css">
+   
+    
+</head>
+<body>
+    <h1>Bienvenue au jeu du Pendu</h1>
+    <div class="menu-buttons">
+        <button class="play-btn" onclick="location.href='/home'">🎮 Jouer</button>
+        <button class="quit-btn" onclick="alert('Merci pour votre visite !')">❌ Quitter</button>
+    </div>
+    <button class="faq-btn" onclick="openFAQ()">ℹ️ FAQ</button>
+
+    <!-- FAQ -->
+    <div class="modal-bg" id="modal-bg"></div>
+    <div class="modal" id="faq-modal">
+        <h2>À propos du projet</h2>
+        <p>Ce projet a été réalisé par le groupe <strong>"Cotton"</strong> dans le cadre d'un exercice de développement web.</p>
+        <h3>Règles du jeu</h3>
+        <p>L'objectif est de deviner le mot caché en proposant des lettres. Vous avez un nombre limité d'essais. Chaque mauvaise réponse réduit vos chances. Devinez le mot avant d'être pendu !</p>
+        <button onclick="closeFAQ()">Fermer</button>
+    </div>
+
+    <script>
+        function openFAQ() {
+            document.getElementById('faq-modal').style.display = 'block';
+            document.getElementById('modal-bg').style.display = 'block';
+        }
+
+        function closeFAQ() {
+            document.getElementById('faq-modal').style.display = 'none';
+            document.getElementById('modal-bg').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
