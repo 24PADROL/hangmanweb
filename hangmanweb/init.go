@@ -64,7 +64,7 @@ func Init() {
 
 func Reset(w http.ResponseWriter, r *http.Request) {
 	Init()                                        // Réinitialise les données de jeu
-	http.Redirect(w, r, "/", http.StatusSeeOther) // Redirige vers la page d'accueil
+	http.Redirect(w, r, "/home", http.StatusSeeOther) // Redirige vers la page d'accueil
 }
 
 func Web() {

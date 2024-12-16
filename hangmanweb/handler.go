@@ -62,7 +62,7 @@ func formateLetter(guessedLetter string) string {
 }
 
 func Input(w http.ResponseWriter, r *http.Request) {
-	// Retrieve the guessed letter
+
 	guessedLetter := r.FormValue("LettreARecuperer")
 	guessedLetter = formateLetter(guessedLetter)
 	if guessedLetter == Data.Word {
@@ -72,7 +72,7 @@ func Input(w http.ResponseWriter, r *http.Request) {
 			Data.LettreUsed = append(Data.LettreUsed, guessedLetter)
 			for i, char := range Data.Word {
 				if string(char) == guessedLetter {
-					// Reveal the guessed letter in the hidden word
+
 					Data.TabHidden[2*i] = guessedLetter
 					nothere = false
 				}
@@ -81,13 +81,12 @@ func Input(w http.ResponseWriter, r *http.Request) {
 				Data.Try--
 			}
 			if nothere {
-
 				Data.Try--
 			}
 			nothere = true
 			win = true
 			for _, i := range Data.TabHidden {
-				if i == "_" { // If any element is "_", the game is not won
+				if i == "_" {
 					win = false
 					break
 				}
@@ -98,8 +97,7 @@ func Input(w http.ResponseWriter, r *http.Request) {
 		} else if Data.Try <= 0 {
 			Lose(w, r)
 		} else {
-			Home(w, r) // Redirect or render the main view
+			Home(w, r)
 		}
 	}
-
 }

@@ -1,15 +1,21 @@
 <!DOCTYPE html>
-		<html lang="fr">
-		<head>
-			<meta charset="UTF-8">
-			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			<title>Victoire</title>
-			<link rel="stylesheet" href="/serv/victory.css">
-		</head>
-		<body>
-			<h1>GG chef !</h1>
-			<p>Vous avez deviné le mot : <strong>{{.Word}}</strong></p>
-			<a href="/reset">Relance ?</a>
-		</body>
-		</html>
-		<button onclick="location.href='/'">Retourner au Menu</button>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victoire</title>
+    <link rel="stylesheet" href="/serv/victory.css">
+</head>
+<body>
+    <h1>GG chef !</h1>
+    <p>Vous avez deviné le mot : <strong>{{.Word}}</strong></p>
+    
+    <!-- Relance button to restart the game -->
+    <form action="/reset" method="GET">
+        <button type="submit">Relance ?</button>
+    </form>
+
+    <!-- Button to return to the menu -->
+    <button onclick="location.href='/menu'">Retourner au Menu</button>
+</body>
+</html>
