@@ -2,7 +2,6 @@ package hangmanweb
 
 import (
 	"net/http"
-	"strings"
 	"text/template"
 )
 
@@ -36,11 +35,7 @@ func letterAlreadyGuessed(s string) bool {
 	return false
 }
 
-func Input(w http.ResponseWriter, r *http.Request) {
-	// Retrieve the guessed letter
-	guessedLetter := r.FormValue("LettreARecuperer")
-	guessedLetter = strings.ToLower(guessedLetter)
-
+func formateLetter(guessedLetter string) string {
 	if guessedLetter == "é" || guessedLetter == "è" || guessedLetter == "ë" || guessedLetter == "ê" {
 		guessedLetter = "e"
 	}
@@ -58,6 +53,34 @@ func Input(w http.ResponseWriter, r *http.Request) {
 	}
 	if guessedLetter == "ç" {
 		guessedLetter = "c"
+	}
+	return guessedLetter
+}
+
+func Input(w http.ResponseWriter, r *http.Request) {
+	// Retrieve the guessed letter
+	guessedLetter := r.FormValue("LettreARecuperer")
+	guessedLetter = formateLetter(guessedLetter)
+	if !letterAlreadyGuessed(guessedLetter) {
+		Data.LettreUsed = append(Data.LettreUsed, guessedLetter)
+		for i, char := range Data.Word {
+			if string(char) == guessedLetter {
+				// Reveal the guessed letter in the hidden word
+				Data.TabHidden[2*i] = guessedLetter
+				nothere = false
+			}
+		}
+		if nothere {
+			Data.Try--
+		}
+		nothere = true
+		win = true
+		for _, i := range Data.TabHidden {
+			if i == "_" { // If any element is "_", the game is not won
+				win = false
+				break
+			}
+		}
 	}
 	if guessedLetter == Data.Word {
 		Victory(w, r)
