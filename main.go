@@ -3,6 +3,7 @@ package main
 import (
 	h "hangmanweb/hangmanweb"
 	"net/http"
+    "log"
 )
 
 func main() {
@@ -14,6 +15,9 @@ func main() {
 	http.HandleFunc("/victory", h.Victory)
 	http.HandleFunc("/lose", h.Lose)
 
-	http.ListenAndServe(":8080", nil)
+	err := http.ListenAndServeTLS(":443", "cert.pem", "key.pem", nil)
+	if err != nil {
+		log.Fatal("Erreur lors du démarrage du serveur HTTPS :", err)
+	}
 
 }
