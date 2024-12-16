@@ -2,22 +2,20 @@ package main
 
 import (
 	h "hangmanweb/hangmanweb"
-	"net/http"
-    "log"
 )
 
 func main() {
 	h.Init()
 	h.Web()
 
-	http.HandleFunc("/", h.Menu)     //page menu
-	http.HandleFunc("/home", h.Home) //page game
-	http.HandleFunc("/victory", h.Victory)
-	http.HandleFunc("/lose", h.Lose)
+	// go func() {
+	// 	log.Fatal(http.ListenAndServe(":8080", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	// 		http.Redirect(w, r, "https://"+r.Host+r.URL.String(), http.StatusMovedPermanently)
+	// 	})))
+	// }()
 
-	err := http.ListenAndServeTLS(":443", "cert.pem", "key.pem", nil)
-	if err != nil {
-		log.Fatal("Erreur lors du démarrage du serveur HTTPS :", err)
-	}
-
+	// err := http.ListenAndServeTLS(":443", "cert.pem", "key.pem", nil)
+	// if err != nil {
+	// 	log.Fatal("Erreur lors du démarrage du serveur HTTPS :", err)
+	// }
 }

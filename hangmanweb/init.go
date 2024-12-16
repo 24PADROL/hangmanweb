@@ -16,7 +16,7 @@ type DataForm struct {
 	Word       string
 	TabHidden  []string
 	Letter     string
-	Try         int
+	Try        int
 }
 
 var Data DataForm
@@ -26,7 +26,7 @@ var nothere bool = true
 
 var nameFill string = "motsimple.txt"
 
-const port = ":8080"
+const port = ":8081"
 
 func randomWord() {
 	fichier, err := os.Open(nameFill)
@@ -62,18 +62,25 @@ func Init() {
 }
 
 func Reset(w http.ResponseWriter, r *http.Request) {
-	Init() // Réinitialise les données de jeu
+	Init()                                        // Réinitialise les données de jeu
 	http.Redirect(w, r, "/", http.StatusSeeOther) // Redirige vers la page d'accueil
 }
 
-
 func Web() {
-	http.HandleFunc("/", Home)
-	http.HandleFunc("/input", Input)
+	http.HandleFunc("/", Menu)     // Menu page
+	http.HandleFunc("/home", Home) // Game page
 	http.HandleFunc("/victory", Victory)
+	http.HandleFunc("/lose", Lose)
+	http.HandleFunc("/input", Input)
 	http.HandleFunc("/reset", Reset)
-	fmt.Println("(http://localhost:8080) - server started on port", port)
-	http.ListenAndServe(port, nil)
+
 	fs := http.FileServer(http.Dir("serv/"))
 	http.Handle("serv/", http.StripPrefix("serv/", fs))
+
+	fmt.Println("(http://localhost:8080) - server started on port", port)
+	http.ListenAndServe(port, nil)
+
+	//caca
+	//http.HandleFunc("/", h.Menu)     // Menu page
+
 }
