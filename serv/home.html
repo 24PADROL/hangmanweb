@@ -3,32 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>hangmanweb</title>
+    <title>Hangman Web</title>
     <style>
         body {
-            background-color: cyan;
+            background-color: #e0f7fa;
+            font-family: Arial, sans-serif;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh; /* Prend la hauteur de la fenêtre */
-            margin: 0; /* Supprime les marges par défaut */
+            height: 100vh;
+            margin: 0;
         }
+
+        h1 {
+            color: #00796b;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #00796b;
+            border-radius: 5px;
+            outline: none;
+            width: 200px;
+            text-align: center;
+        }
+
+        input[type="text"]:focus {
+            border-color: #004d40;
+            box-shadow: 0 0 5px #004d40;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #00796b;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #004d40;
+        }
+
+        p {
+            margin: 10px 0;
+            font-size: 18px;
+            color: #004d40;
+        }
+
     </style>
 </head>
 <body>
+    <h1>Jeu du Pendu</h1>
     <div>
-        <form method ="POST" action = "/input">
-            <input name = "LettreARecuperer" type = "text" placeholder= "Trouve" maxlength="1" required id ="letterInput" />
+        <form method="POST" action="/input">
+            <label for="letterInput">Propose une lettre :</label>
+            <input name="LettreARecuperer" type="text" placeholder="" maxlength="1" required id="letterInput" pattern="[a-zA-ZÀ-ſ]" title="Veuillez entrer une lettre valide (sans chiffres ni symboles)." />
+            <button type="submit">Envoyer</button>
         </form>
     </div>
-<script>
+    <div>
+        <p>Lettres utilisées : <strong>{{.LettreUsed}}</strong></p>
+        <p>Mot caché : <strong>{{.TabHidden}}</strong></p>
+        <p>Mot complet : <strong>{{.Word}}</strong></p>
+        <p>Vie : <strong>{{.Try}}</strong></p>
+    </div>
+    <script>
         window.onload = () => {
             document.getElementById('letterInput').focus();
         };
-</script>
-     <p> {{.LettreUsed}}</p>
-    <p>{{.TabHidden}}</p>
-    <p>{{.Word}}</p>
-    </form>
+    </script>
 </body>
 </html>
