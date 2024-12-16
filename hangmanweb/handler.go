@@ -79,7 +79,8 @@ func Input(w http.ResponseWriter, r *http.Request) {
 			win = false
 			break
 		}
-	}}
+	}
+}
 	if win {
 		Victory(w, r)
 	} else if Data.Try == 0 {

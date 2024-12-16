@@ -71,7 +71,7 @@
     <div>
         <form method="POST" action="/input">
             <label for="letterInput">Propose une lettre :</label>
-            <input name="LettreARecuperer" type="text" placeholder="" required id="letterInput" pattern="[a-zA-ZÀ-ſ]" title="Veuillez entrer une lettre valide (sans chiffres ni symboles)." />
+            <input name="LettreARecuperer" type="text" placeholder="" required id="letterInput" pattern="[a-zA-ZÀ-ÿ]+" title="Veuillez entrer une lettre valide (sans chiffres ni symboles)." />
             <button type="submit">Envoyer</button>
         </form>
         <p>Lettres utilisées : <strong>{{.LettreUsed}}</strong></p>
