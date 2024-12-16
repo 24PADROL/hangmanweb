@@ -66,9 +66,8 @@ func Input(w http.ResponseWriter, r *http.Request) {
 				nothere = false
 			}
 		}
-	}
 	if nothere {
-		
+
 		Data.Try--
 	}
 	nothere = true
@@ -78,7 +77,7 @@ func Input(w http.ResponseWriter, r *http.Request) {
 			win = false
 			break
 		}
-	}
+	}}
 	if win {
 		Victory(w, r)
 	} else if Data.Try == 0 {
@@ -87,3 +86,4 @@ func Input(w http.ResponseWriter, r *http.Request) {
 		Home(w, r) // Redirect or render the main view
 	}
 }
+
