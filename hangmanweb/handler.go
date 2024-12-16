@@ -26,7 +26,7 @@ func Lose(w http.ResponseWriter, r *http.Request) {
 	RenderTemplate(w, "lose")
 }
 
-func Menu(w http.ResponseWriter, r *http.Request) { 
+func Menu(w http.ResponseWriter, r *http.Request) {
 	RenderTemplate(w, "menu")
 }
 
