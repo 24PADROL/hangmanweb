@@ -36,19 +36,37 @@ input[type="text"]:focus {
 }
 
 button {
-    margin-top: 15px;
-    padding: 10px 20px;
-    font-size: 16px;
-    color: white;
-    background-color: #00796b;
+    padding: 15px 30px;
+    margin: 10px;
+    font-size: 20px;
+    font-weight: bold;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    color: white;
+    background: rgba(0, 0, 0, 0.7);
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 button:hover {
-    background-color: #004d40;
+    transform: scale(1.1);
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.play-btn {
+    background: rgba(40, 167, 69, 0.8); /* Green */
+}
+
+.play-btn:hover {
+    background: rgba(40, 167, 69, 1);
+}
+
+.quit-btn {
+    background: rgba(220, 53, 69, 0.8); /* Red */
+}
+
+.quit-btn:hover {
+    background: rgba(220, 53, 69, 1);
 }
 
 p {

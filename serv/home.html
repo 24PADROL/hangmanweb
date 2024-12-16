@@ -11,19 +11,20 @@
     <div>
         <form method="POST" action="/input">
             <label for="letterInput">Propose une lettre :</label>
-            <input name="LettreARecuperer" type="text" placeholder="" required id="letterInput" pattern="[a-zA-ZÀ-ÿ]+" title="Veuillez entrer une lettre valide (sans chiffres ni symboles)." />
-            <button type="submit">Envoyer</button>
+            <input name="LettreARecuperer" type="text" required id="letterInput" 
+                pattern="[a-zA-ZÀ-ÿ]+" title="Veuillez entrer une lettre valide (sans chiffres ni symboles)." />
+            <button class="play-btn" type="submit">Envoyer</button>
         </form>
         <p>Lettres utilisées : <strong>{{.LettreUsed}}</strong></p>
         <p>Mot caché : <strong>{{.TabHidden}}</strong></p>
-        <p>Mot complet : <strong>{{.Word}}</strong></p>
         <p>Vie : <strong>{{.Try}}</strong></p>
     </div>
-    <button onclick="location.href='/menu'">Retourner au Menu</button>
+    <!-- Return to Menu button -->
+    <button class="quit-btn" onclick="location.href='/menu'">Retourner au Menu</button>
 
     <script>
         window.onload = () => {
-            document.getElementById('letterInput').focus();
+            document.getElementById('letterrInput').focus();
         };
     </script>
 </body>
