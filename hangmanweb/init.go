@@ -75,7 +75,7 @@ func Web() {
 	http.HandleFunc("/reset", Reset)
 
 	fs := http.FileServer(http.Dir("serv/"))
-	http.Handle("serv/", http.StripPrefix("serv/", fs))
+	http.Handle("/serv/", http.StripPrefix("/serv/", fs))
 
 	fmt.Println("(http://localhost:8080) - server started on port", port)
 	http.ListenAndServe(port, nil)
