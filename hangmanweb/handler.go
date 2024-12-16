@@ -26,6 +26,15 @@ func Lose(w http.ResponseWriter, r *http.Request) {
 	RenderTemplate(w, "lose")
 }
 
+func letterAlreadyGuessed(s string) bool {
+	for _, i := range Data.LettreUsed {
+		if s == i {
+			return true
+		}
+	}
+	return false
+}
+
 func Input(w http.ResponseWriter, r *http.Request) {
 	// Retrieve the guessed letter
 	guessedLetter := r.FormValue("LettreARecuperer")
@@ -48,25 +57,25 @@ func Input(w http.ResponseWriter, r *http.Request) {
 	if guessedLetter == "ç" {
 		guessedLetter = "c"
 	}
-
-	Data.LettreUsed = append(Data.LettreUsed, guessedLetter)
-	for i, char := range Data.Word {
-		if string(char) == guessedLetter {
-			// Reveal the guessed letter in the hidden word
-			Data.TabHidden[2*i] = guessedLetter
-			nothere = false
-			break
+	if !letterAlreadyGuessed(guessedLetter) {
+		Data.LettreUsed = append(Data.LettreUsed, guessedLetter)
+		for i, char := range Data.Word {
+			if string(char) == guessedLetter {
+				// Reveal the guessed letter in the hidden word
+				Data.TabHidden[2*i] = guessedLetter
+				nothere = false
+			}
 		}
-	}
-	if nothere {
-		Data.Try--
-	}
-	nothere = true
-	win = true
-	for _, i := range Data.TabHidden {
-		if i == "_" { // If any element is "_", the game is not won
-			win = false
-			break
+		if nothere {
+			Data.Try--
+		}
+		nothere = true
+		win = true
+		for _, i := range Data.TabHidden {
+			if i == "_" { // If any element is "_", the game is not won
+				win = false
+				break
+			}
 		}
 	}
 	if win {
