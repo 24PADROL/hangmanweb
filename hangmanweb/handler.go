@@ -101,5 +101,4 @@ func Input(w http.ResponseWriter, r *http.Request) {
 			Home(w, r) // Redirect or render the main view
 		}
 	}
-
 }
