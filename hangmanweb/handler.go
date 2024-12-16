@@ -45,6 +45,9 @@ func Input(w http.ResponseWriter, r *http.Request) {
 	if guessedLetter == "ô" || guessedLetter == "ö" {
 		guessedLetter = "o"
 	}
+	if guessedLetter == "ç" {
+		guessedLetter = "c"
+	}
 
 	Data.LettreUsed = append(Data.LettreUsed, guessedLetter)
 	for i, char := range Data.Word {
