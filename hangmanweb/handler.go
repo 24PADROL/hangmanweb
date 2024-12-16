@@ -35,7 +35,7 @@ func letterAlreadyGuessed(s string) bool {
 	return false
 }
 
-func formateLetter(guessedLetter string) string {
+func formateLetter(guessedLetter string) string{
 	if guessedLetter == "é" || guessedLetter == "è" || guessedLetter == "ë" || guessedLetter == "ê" {
 		guessedLetter = "e"
 	}
@@ -82,7 +82,7 @@ func Input(w http.ResponseWriter, r *http.Request) {
 			}
 		}
 	}
-	if guessedLetter == Data.Word {
+	if win {
 		Victory(w, r)
 	} else {
 		if !letterAlreadyGuessed(guessedLetter) {
