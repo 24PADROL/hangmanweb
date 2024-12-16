@@ -7,7 +7,7 @@ body {
 }
 h1 {
     font-size: 3rem;
-    color: #28a745;
+    color: #dc3545;
     margin: 20px 0;
     animation: pop 1s ease-in-out;
 }
