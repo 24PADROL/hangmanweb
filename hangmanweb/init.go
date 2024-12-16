@@ -26,7 +26,7 @@ var nothere bool = true
 
 var nameFill string = "motsimple.txt"
 
-const port = ":8081"
+const port = ":8080"
 
 func randomWord() {
 	fichier, err := os.Open(nameFill)
@@ -79,8 +79,5 @@ func Web() {
 
 	fmt.Println("(http://localhost:8080) - server started on port", port)
 	http.ListenAndServe(port, nil)
-
-	//caca
-	//http.HandleFunc("/", h.Menu)     // Menu page
 
 }
