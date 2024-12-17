@@ -68,8 +68,8 @@ func Reset(w http.ResponseWriter, r *http.Request) {
 }
 
 func Web() {
-	http.HandleFunc("/", Menu)     // Menu page
-	http.HandleFunc("/home", Home) // Game page
+	http.HandleFunc("/", Menu)     
+	http.HandleFunc("/home", Home)
 	http.HandleFunc("/victory", Victory)
 	http.HandleFunc("/lose", Lose)
 	http.HandleFunc("/input", Input)
