@@ -32,22 +32,21 @@ button {
     transition: transform 0.2s, background-color 0.2s;
 }
 
-/* Green button for 'Relance' */
+
 .play-btn {
-    background: rgba(40, 167, 69, 0.8); /* Green */
+    background: rgba(40, 167, 69, 0.8); 
 }
 
 .play-btn:hover {
-    background: rgba(40, 167, 69, 1); /* Darker green */
+    background: rgba(40, 167, 69, 1); 
     transform: scale(1.1);
 }
 
-/* Red button for 'Retourner au Menu' */
 .quit-btn {
-    background: rgba(220, 53, 69, 0.8); /* Red */
+    background: rgba(220, 53, 69, 0.8); 
 }
 
 .quit-btn:hover {
-    background: rgba(220, 53, 69, 1); /* Darker red */
+    background: rgba(220, 53, 69, 1); 
     transform: scale(1.1);
 }
