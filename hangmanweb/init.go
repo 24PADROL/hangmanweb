@@ -58,6 +58,7 @@ func printHidden() {
 
 func Init() {
 	Data = DataForm{}
+	Data.ImagePath = "serv/image/Hangman_0_vies-removebg-preview.png"
 	Data.Try = 10
 	randomWord()
 	printHidden()
