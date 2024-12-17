@@ -17,6 +17,7 @@ type DataForm struct {
 	TabHidden  []string
 	Letter     string
 	Try        int
+	ImagePath  string
 }
 
 var Data DataForm
