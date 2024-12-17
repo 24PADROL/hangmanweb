@@ -1,41 +1,53 @@
+
 body {
-    background-color: #f0f8ff;
+    background-color: #f0f8ff; 
     font-family: Arial, sans-serif;
     color: #333;
     text-align: center;
     padding: 20px;
 }
+
+
 h1 {
     font-size: 3rem;
-    color: #28a745;
+    color: #28a745; 
     margin: 20px 0;
-    animation: pop 1s ease-in-out;
 }
+
 p {
     font-size: 1.5rem;
     margin: 20px 0;
+    color: #00796b; 
 }
-a {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    text-decoration: none;
+
+button {
     font-size: 1.2rem;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 10px 20px;
+    margin-top: 20px;
+    color: white;
+    transition: transform 0.2s, background-color 0.2s;
 }
-a:hover {
-    background-color: #0056b3;
+
+/* Green button for 'Relance' */
+.play-btn {
+    background: rgba(40, 167, 69, 0.8); /* Green */
 }
-@keyframes pop {
-    0% {
-        transform: scale(0.8);
-        opacity: 0;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
+
+.play-btn:hover {
+    background: rgba(40, 167, 69, 1); /* Darker green */
+    transform: scale(1.1);
+}
+
+/* Red button for 'Retourner au Menu' */
+.quit-btn {
+    background: rgba(220, 53, 69, 0.8); /* Red */
+}
+
+.quit-btn:hover {
+    background: rgba(220, 53, 69, 1); /* Darker red */
+    transform: scale(1.1);
 }

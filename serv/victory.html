@@ -4,18 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Victoire</title>
-    <link rel="stylesheet" href="/serv/victory.css">
+    <link rel="stylesheet" href="/serv/victory.css"> 
 </head>
 <body>
-    <h1>GG chef !</h1>
-    <p>Vous avez deviné le mot : <strong>{{.Word}}</strong></p>
     
-    <!-- Relance button to restart the game -->
-    <form action="/reset" method="GET">
-        <button type="submit">Relance ?</button>
-    </form>
+    <h1>GG chef !</h1>
+    
+    <p>Vous avez deviné le mot : <strong>{{.Word}}</strong></p>
 
-    <!-- Button to return to the menu -->
-    <button onclick="location.href='/menu'">Retourner au Menu</button>
+    
+    <button class="play-btn" onclick="location.href='/reset'">🔄 Relance ?</button>
+
+    <button class="quit-btn" onclick="location.href='/menu'">❌ Retourner au Menu</button>
 </body>
 </html>
