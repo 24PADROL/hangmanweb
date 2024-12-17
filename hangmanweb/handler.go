@@ -38,6 +38,32 @@ func letterAlreadyGuessed(s string) bool {
 	}
 	return false
 }
+func image(n int){
+	switch n {
+	case 1:
+		Data.ImagePath = "serv/image/Hangman_0_vies-removebg-preview.png"
+	case 2:
+		Data.ImagePath = "serv/image/Hangman_1_vies-removebg-preview.png"
+	case 3:
+		Data.ImagePath = "serv/image/Hangman_2_vies-removebg-preview.png"
+	case 4:
+		Data.ImagePath = "serv/image/Hangman_3_vies-removebg-preview.png"
+	case 5:
+		Data.ImagePath = "serv/image/Hangman_4_vies-removebg-preview.png"
+	case 6:
+		Data.ImagePath = "serv/image/Hangman_5_vies-removebg-preview.png"
+	case 7:
+		Data.ImagePath = "serv/image/Hangman_6_vies-removebg-preview.png"
+	case 8:
+		Data.ImagePath = "serv/image/Hangman_7_vies-removebg-preview.png"
+	case 9:
+		Data.ImagePath = "serv/image/Hangman_8_vies-removebg-preview.png"
+	case 10:
+		Data.ImagePath = "serv/image/Hangman_9_vies-removebg-preview.png"
+	default:
+		Data.ImagePath = "serv/image/Hangman_0_vies-removebg-preview.png"
+	}
+}
 
 func formateLetter(guessedLetter string) string {
 	if guessedLetter == "é" || guessedLetter == "è" || guessedLetter == "ë" || guessedLetter == "ê" {
@@ -83,6 +109,7 @@ func Input(w http.ResponseWriter, r *http.Request) {
 			if nothere {
 				Data.Try--
 			}
+			image(Data.Try)
 			nothere = true
 			win = true
 			for _, i := range Data.TabHidden {

@@ -17,6 +17,7 @@ type DataForm struct {
 	TabHidden  []string
 	Letter     string
 	Try        int
+	ImagePath  string
 }
 
 var Data DataForm
@@ -57,6 +58,7 @@ func printHidden() {
 
 func Init() {
 	Data = DataForm{}
+	Data.ImagePath = "serv/image/Hangman_0_vies-removebg-preview.png"
 	Data.Try = 10
 	randomWord()
 	printHidden()
