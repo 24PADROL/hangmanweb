@@ -63,7 +63,7 @@ func Init() {
 }
 
 func Reset(w http.ResponseWriter, r *http.Request) {
-	Init()                                        // Réinitialise les données de jeu
+	Init()                                            // Réinitialise les données de jeu
 	http.Redirect(w, r, "/home", http.StatusSeeOther) // Redirige vers la page d'accueil
 }
 
@@ -74,6 +74,8 @@ func Web() {
 	http.HandleFunc("/lose", Lose)
 	http.HandleFunc("/input", Input)
 	http.HandleFunc("/reset", Reset)
+	http.HandleFunc("/thankyou", func(w http.ResponseWriter, r *http.Request) {
+        http.ServeFile(w, r, "./serv/thankyou.html")  })
 
 	fs := http.FileServer(http.Dir("serv/"))
 	http.Handle("/serv/", http.StripPrefix("/serv/", fs))
